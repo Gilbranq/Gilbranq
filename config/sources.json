@@ -1,0 +1,18 @@
+{
+  "sources": [
+    {"name":"BuscaPreço AM / Sefaz-AM","type":"government","url":"https://www.buscapreco.sefaz.am.gov.br/","state":"AM","city":"Manaus"},
+    {"name":"Distribuidor Manaus","type":"site","url":"https://example.com/distribuidor-manaus","state":"AM","city":"Manaus"},
+    {"name":"Marketplace Manaus","type":"marketplace","url":"https://example.com/marketplace-manaus-agua","state":"AM","city":"Manaus"},
+    {"name":"Distribuidor Belém","type":"site","url":"https://example.com/distribuidor-belem","state":"PA","city":"Belém"},
+    {"name":"Marketplace Norte","type":"marketplace","url":"https://example.com/marketplace-norte","state":"PA","city":"Belém"},
+    {"name":"Distribuidor Fortaleza","type":"site","url":"https://example.com/distribuidor-fortaleza","state":"CE","city":"Fortaleza"},
+    {"name":"Marketplace Fortaleza","type":"marketplace","url":"https://example.com/marketplace-fortaleza","state":"CE","city":"Fortaleza"},
+    {"name":"Canal social Nordeste","type":"social","url":"https://example.com/social-nordeste","state":"CE","city":"Fortaleza"},
+    {"name":"Distribuidor Recife","type":"site","url":"https://example.com/distribuidor-recife","state":"PE","city":"Recife"},
+    {"name":"Marketplace Recife","type":"marketplace","url":"https://example.com/marketplace-recife","state":"PE","city":"Recife"},
+    {"name":"Distribuidor Salvador","type":"site","url":"https://example.com/distribuidor-salvador","state":"BA","city":"Salvador"},
+    {"name":"Canal social Salvador","type":"social","url":"https://example.com/social-salvador","state":"BA","city":"Salvador"},
+    {"name":"Distribuidor Natal","type":"site","url":"https://example.com/distribuidor-natal","state":"RN","city":"Natal"},
+    {"name":"Canal social São Luís","type":"social","url":"https://example.com/social-sao-luis","state":"MA","city":"São Luís"}
+  ]
+}
