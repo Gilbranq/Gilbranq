@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Cartilha Completa de Segurança da Informação | Real Bebidas da Amazônia + CERT.br</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #eef2f5;
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            line-height: 1.5;
+            color: #1a2c3e;
+            padding: 2rem 1rem;
+        }
+
+        .cartilha {
+            max-width: 1300px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 25px 45px -12px rgba(0,0,0,0.25);
+            overflow: hidden;
+        }
+
+        /* cabeçalho hero */
+        .hero {
+            background: linear-gradient(135deg, #0b3b2f 0%, #145c46 100%);
+            color: white;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            border-bottom: 6px solid #f4c542;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            letter-spacing: -0.3px;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.8rem;
+            margin-top: 1.4rem;
+        }
+
+        .tag {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(4px);
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* sumário expandido */
+        .indice-expandido {
+            background: #f8fafc;
+            padding: 1.8rem 2rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .indice-expandido h2 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #0f3b2f;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .grid-indice {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            justify-content: flex-start;
+        }
+
+        .card-indice {
+            background: white;
+            border-radius: 60px;
+            padding: 0.4rem 1.2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            font-weight: 600;
+            font-size: 0.85rem;
+            border: 1px solid #dce5ec;
+            color: #145c46;
+        }
+
+        .conteudo {
+            padding: 2rem 2rem 2rem 2rem;
+        }
+
+        .capitulo {
+            margin-bottom: 3rem;
+            scroll-margin-top: 20px;
+            border-bottom: 1px solid #e9edf2;
+            padding-bottom: 2rem;
+        }
+
+        .capitulo h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            border-left: 7px solid #f4c542;
+            padding-left: 1rem;
+            margin-bottom: 1.2rem;
+            color: #0b3b2f;
+        }
+
+        .capitulo h3 {
+            font-size: 1.3rem;
+            margin: 1.2rem 0 0.6rem 0;
+            color: #2c5a48;
+        }
+
+        .destaque {
+            background: #fef9e6;
+            border-left: 5px solid #f4b942;
+            padding: 1rem 1.4rem;
+            border-radius: 16px;
+            margin: 1.2rem 0;
+            font-weight: 500;
+        }
+
+        .riscos-grid, .boas-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.2rem 0;
+        }
+
+        .card-risco {
+            background: #f1f5f9;
+            padding: 0.8rem 1.2rem;
+            border-radius: 24px;
+            flex: 1 1 200px;
+            font-weight: 500;
+            border: 1px solid #e0e9f0;
+        }
+
+        .tabela-compare {
+            width: 100%;
+            border-collapse: collapse;
+            background: #ffffff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            margin: 1rem 0;
+        }
+
+        .tabela-compare th, .tabela-compare td {
+            text-align: left;
+            padding: 12px 16px;
+            border-bottom: 1px solid #e9edf2;
+        }
+
+        .tabela-compare th {
+            background-color: #eef2f5;
+            font-weight: 700;
+            color: #145c46;
+        }
+
+        .badge-ruim {
+            background: #ffe6e5;
+            color: #b91c1c;
+            padding: 4px 8px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.75rem;
+            display: inline-block;
+        }
+
+        .badge-bom {
+            background: #dcfce7;
+            color: #15803d;
+            padding: 4px 8px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.75rem;
+            display: inline-block;
+        }
+
+        .dica-real, .dica-cert {
+            background: #e0f2fe;
+            border-radius: 24px;
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-left: 6px solid #0284c7;
+            font-style: normal;
+            font-weight: 500;
+        }
+
+        .checklist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0 1rem;
+        }
+
+        .check-categoria {
+            background: #f9fbfd;
+            border-radius: 24px;
+            padding: 1.2rem 1.4rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            border: 1px solid #eef2f8;
+        }
+
+        .check-categoria h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #145c46;
+            border-bottom: 2px solid #f4c542;
+            display: inline-block;
+        }
+
+        .check-item {
+            margin: 0.7rem 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .check-item::before {
+            content: "■";
+            color: #f4b842;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .whatsapp-box {
+            background: linear-gradient(120deg, #075e54 0%, #128c7e 100%);
+            color: white;
+            border-radius: 28px;
+            padding: 1.8rem;
+            margin: 1.5rem 0;
+        }
+
+        .whatsapp-box h3, .whatsapp-box h4 {
+            color: white;
+            border-left-color: #f4c542;
+        }
+
+        .whatsapp-box ul li {
+            margin-bottom: 0.6rem;
+        }
+
+        footer {
+            background: #0b2c23;
+            color: #cddfd9;
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid #2b5a48;
+        }
+
+        footer a {
+            color: #f4c542;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .btn-topo {
+            position: sticky;
+            bottom: 20px;
+            text-align: right;
+            margin-top: 20px;
+        }
+
+        .top-link {
+            background: #145c46;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: 0.2s;
+        }
+
+        @media (max-width: 700px) {
+            .conteudo {
+                padding: 1.5rem;
+            }
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+            .capitulo h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="cartilha">
+    <div class="hero">
+        <h1>🛡️ SEGURANÇA DA INFORMAÇÃO — GUIA COMPLETO</h1>
+        <p>Boas práticas para proteger você, os dados e a empresa | Real Bebidas da Amazônia + CERT.br</p>
+        <div class="tags">
+            <span class="tag">🔐 GOLPES</span>
+            <span class="tag">🔑 SENHAS</span>
+            <span class="tag">📱 DISPOSITIVOS</span>
+            <span class="tag">👁️ PRIVACIDADE</span>
+            <span class="tag">📡 REDES</span>
+            <span class="tag">💬 WHATSAPP CORPORATIVO</span>
+        </div>
+        <p style="margin-top: 1rem; font-size: 0.9rem;">Referência: CERT.br / NIC.br / Real Bebidas da Amazônia – 2025</p>
+    </div>
+
+    <!-- Índice expandido -->
+    <div class="indice-expandido">
+        <h2>📘 CONTEÚDO DETALHADO</h2>
+        <div class="grid-indice">
+            <span class="card-indice">01 Segurança Internet</span>
+            <span class="card-indice">02 Golpes (Phishing, Eng. Social)</span>
+            <span class="card-indice">03 Ataques & Malware</span>
+            <span class="card-indice">04 Senhas & 2FA</span>
+            <span class="card-indice">05 Dispositivos Seguros</span>
+            <span class="card-indice">06 Redes Wi-Fi & VPN</span>
+            <span class="card-indice">07 Privacidade & Redes Sociais</span>
+            <span class="card-indice">08 WhatsApp Corporativo</span>
+            <span class="card-indice">09 Criptografia & Certificados</span>
+            <span class="card-indice">10 Checklist Geral</span>
+        </div>
+    </div>
+
+    <div class="conteudo">
+        <!-- CAP 01 - SEGURANÇA INTERNET (CERT.br) -->
+        <div class="capitulo" id="cap1">
+            <h2>01 SEGURANÇA NA INTERNET</h2>
+            <p>A Internet está presente no cotidiano – bancos, compras, redes sociais, e-mail. Porém, os riscos são reais: furto de identidade, invasão de privacidade, códigos maliciosos e golpes. O primeiro passo é entender que a internet não tem nada de “virtual”: os cuidados do mundo físico também valem aqui.</p>
+            <h3>Principais riscos (CERT.br):</h3>
+            <div class="riscos-grid">
+                <div class="card-risco">🔐 Furto de identidade</div>
+                <div class="card-risco">🎭 Engenharia social</div>
+                <div class="card-risco">🕵️ Invasão de privacidade</div>
+                <div class="card-risco">📉 Perda de dados / Backup</div>
+                <div class="card-risco">📢 Boatos e desinformação</div>
+                <div class="card-risco">⚠️ Dificuldade de exclusão de conteúdo</div>
+            </div>
+            <div class="dica-real">
+                💡 “Leve para a Internet os mesmos cuidados que você tem no dia a dia: confira procedência, não compartilhe dados sensíveis, desconfie de ofertas mirabolantes.”
+            </div>
+        </div>
+
+        <!-- CAP 02 - GOLPES (Phishing, Engenharia Social, Pharming) -->
+        <div class="capitulo" id="cap2">
+            <h2>02 GOLPES NA INTERNET</h2>
+            <p>Golpistas utilizam técnicas de engenharia social para obter vantagens. Phishing é o mais comum: e-mails ou mensagens falsas que simulam instituições confiáveis (bancos, empresas, provedores). Pharming redireciona a navegação mesmo quando você digita o endereço correto.</p>
+            <h3>Como reconhecer um golpe:</h3>
+            <ul style="margin-left: 1.5rem;">
+                <li>Mensagens com urgência excessiva (“Sua conta será bloqueada”)</li>
+                <li>Links que não correspondem ao domínio oficial (passe o mouse para ver o verdadeiro)</li>
+                <li>Erros gramaticais ou remetente estranho</li>
+                <li>Solicitação de senhas, dados bancários ou código de confirmação</li>
+            </ul>
+            <div class="dica-real">
+                🎣 Dica Real: Nunca clique em links de e-mails suspeitos. Acesse o site digitando o endereço manualmente no navegador. Comunique imediatamente o TI da Real Bebidas.
+            </div>
+            <p><strong>Fraude de antecipação de recursos (Golpe da Nigéria):</strong> promessas de altas quantias em troca de ajuda financeira antecipada. Ignore e não responda.</p>
+        </div>
+
+        <!-- CAP 03 - ATAQUES E CÓDIGOS MALICIOSOS (Malware) -->
+        <div class="capitulo" id="cap3">
+            <h2>03 ATAQUES NA INTERNET & MALWARE</h2>
+            <p>Atacantes utilizam varreduras, força bruta, interceptação de tráfego e exploração de vulnerabilidades. Os principais códigos maliciosos (malware) são vírus, worms, trojans, bots (botnets), backdoors, rootkits e spyware.</p>
+            <table class="tabela-compare">
+                <thead><tr><th>Tipo</th><th>Característica principal</th><th>Exemplo de dano</th></tr></thead>
+                <tbody>
+                    <tr><td>Vírus</td><td>Propaga-se anexado a arquivos</td><td>Corrompe documentos</td></tr>
+                    <tr><td>Worm</td><td>Propaga-se automaticamente pela rede</td><td>Consome banda, infecta em massa</td></tr>
+                    <tr><td>Bot / Botnet</td><td>Controlado remotamente por atacante</td><td>DDoS, envio de spam</td></tr>
+                    <tr><td>Spyware / Keylogger</td><td>Monitora atividades e captura teclas</td><td>Roubo de senhas</td></tr>
+                    <tr><td>Trojan (Cavalo de Troia)</td><td>Aparenta ser útil, mas executa ações maliciosas</td><td>Instala backdoors, rouba dados</td></tr>
+                </tbody>
+            </table>
+            <div class="destaque">
+                🔒 Prevenção: mantenha antivírus atualizado, firewall ativo, evite executar arquivos suspeitos e sempre atualize o sistema operacional.
+            </div>
+        </div>
+
+        <!-- CAP 04 - SENHAS SEGURAS + 2FA (com técnicas CERT.br) -->
+        <div class="capitulo" id="cap4">
+            <h2>04 SENHAS SEGURAS E AUTENTICAÇÃO</h2>
+            <p>Senhas são a primeira linha de defesa. Evite dados pessoais, sequências de teclado (“qwerty”) e palavras de dicionário. Use frases longas e imprevisíveis.</p>
+            <h3>Boas práticas (CERT.br):</h3>
+            <ul>
+                <li>Mínimo de 12 caracteres, incluindo maiúsculas, minúsculas, números e símbolos.</li>
+                <li>Nunca reutilizar a mesma senha em serviços diferentes (principalmente e-mail e banco).</li>
+                <li>Utilize um gerenciador de senhas (Bitwarden, KeePass, 1Password) com chave mestra forte.</li>
+                <li>Ative sempre a autenticação em dois fatores (2FA) via app autenticador (Google Authenticator, Microsoft Authenticator) ou SMS quando disponível.</li>
+            </ul>
+            <div class="dica-real">
+                🔐 Chave mestra: proteja o cofre de senhas; jamais compartilhe suas credenciais com colegas.
+            </div>
+        </div>
+
+        <!-- CAP 05 - DISPOSITIVOS E COMPUTADORES -->
+        <div class="capitulo" id="cap5">
+            <h2>05 SEGURANÇA DE DISPOSITIVOS</h2>
+            <p>Mantenha seu computador, notebook e celular sempre atualizados (patches de segurança). Use apenas softwares originais e desconfie de cracks.</p>
+            <div class="riscos-grid">
+                <div class="card-risco">✅ Antivírus + Firewall ativo</div>
+                <div class="card-risco">🔄 Atualizações automáticas</div>
+                <div class="card-risco">🔒 Bloqueio de tela (senha ou biometria)</div>
+                <div class="card-risco">💾 Backup periódico (regra 3-2-1)</div>
+                <div class="card-risco">📀 Discos de emergência</div>
+            </div>
+            <p><strong>Cuidados com computadores de terceiros:</strong> nunca salve senhas no navegador, sempre faça logout, evite acessar sistemas bancários em cybercafés.</p>
+        </div>
+
+        <!-- CAP 06 - REDES E WI-FI + VPN -->
+        <div class="capitulo" id="cap6">
+            <h2>06 REDES SEM FIO (Wi-Fi) E VPN</h2>
+            <p>Redes abertas em shoppings, aeroportos e cafés são alvo de interceptação de tráfego (sniffing). Sempre que possível, utilize VPN corporativa e evite tráfego de dados sensíveis em Wi-Fi público.</p>
+            <table class="tabela-compare">
+                <thead><tr><th>Ambiente</th><th>Risco</th><th>Recomendação</th></tr></thead>
+                <tbody>
+                    <tr><td>Wi-Fi aberto (shopping, hotel)</td><td>Interceptação de senhas</td><td>Use dados móveis + VPN</td></tr>
+                    <tr><td>Rede com nome suspeito (evil twin)</td><td>Rede falsa para roubo de dados</td><td>Confirme com o estabelecimento</td></tr>
+                    <tr><td>Home office</td><td>Roteador padrão inseguro</td><td>Altere senha padrão, use WPA2/WPA3</td></tr>
+                </tbody>
+            </table>
+            <div class="dica-real">
+                📡 Desative Bluetooth quando não estiver usando e nunca aceite pareamento desconhecido.
+            </div>
+        </div>
+
+        <!-- CAP 07 - PRIVACIDADE E REDES SOCIAIS (com foco LGPD) -->
+        <div class="capitulo" id="cap7">
+            <h2>07 PRIVACIDADE E REDES SOCIAIS</h2>
+            <p>O que você publica pode ser usado contra você ou a empresa. Golpistas coletam informações de perfis públicos para engenharia social e ataques direcionados.</p>
+            <h3>Recomendações essenciais:</h3>
+            <ul>
+                <li>Revise configurações de privacidade (somente amigos, não público).</li>
+                <li>Não compartilhe rotina, localização em tempo real ou fotos de documentos.</li>
+                <li>Evite aceitar solicitações de pessoas desconhecidas.</li>
+                <li>Não publique informações confidenciais da Real Bebidas (fotos de telas, documentos internos, estratégias).</li>
+            </ul>
+            <div class="destaque">
+                ⚖️ LGPD: A Lei Geral de Proteção de Dados exige cuidado com dados de clientes e colaboradores. Vazamentos podem gerar multas severas.
+            </div>
+        </div>
+
+        <!-- NOVO CAPÍTULO - WHATSAPP CORPORATIVO (USO SEGURO NA REDE) -->
+        <div class="capitulo" id="cap8">
+            <h2>08 💬 USO SEGURO DO WHATSAPP NA REDE CORPORATIVA</h2>
+            <p>O WhatsApp é amplamente utilizado para comunicação interna e com clientes. No entanto, seu uso inadequado pode expor dados sensíveis, propagar golpes e comprometer a segurança da informação.</p>
+            
+            <div class="whatsapp-box">
+                <h3>🔐 Riscos do WhatsApp na empresa:</h3>
+                <ul style="margin-left: 1.2rem;">
+                    <li><strong>Vazamento de informações:</strong> envio acidental de planilhas, listas de clientes ou documentos internos.</li>
+                    <li><strong>Golpes de clonagem:</strong> criminosos podem clonar seu número e enviar mensagens pedindo dinheiro ou dados.</li>
+                    <li><strong>Phishing via WhatsApp:</strong> mensagens com links falsos, promoções irresistíveis ou supostos avisos bancários.</li>
+                    <li><strong>Malware por arquivos:</strong> PDFs, APKs ou documentos com vírus disfarçados de comunicados.</li>
+                    <li><strong>Compartilhamento de senhas ou credenciais via texto:</strong> prática proibida e perigosa.</li>
+                </ul>
+            </div>
+
+            <h3>✅ Boas práticas para WhatsApp corporativo:</h3>
+            <ul>
+                <li><strong>Use WhatsApp Business oficial:</strong> configure perfil da empresa, evite contas pessoais para assuntos profissionais.</li>
+                <li><strong>Ative a verificação em duas etapas:</strong> no WhatsApp > Configurações > Conta > Verificação em duas etapas (crie um PIN de 6 dígitos).</li>
+                <li><strong>Nunca compartilhe senhas, tokens ou dados bancários por WhatsApp.</strong></li>
+                <li><strong>Desconfie de mensagens inesperadas</strong> mesmo que venham de colegas (conta pode estar comprometida).</li>
+                <li><strong>Não clique em links suspeitos</strong> ou baixe arquivos de remetentes não verificados.</li>
+                <li><strong>Configure backup criptografado de ponta a ponta</strong> e evite armazenar conversas confidenciais na nuvem sem controle.</li>
+                <li><strong>Não fotografe telas do computador com o celular</strong> para compartilhar informações sigilosas via WhatsApp.</li>
+                <li><strong>Em caso de perda ou roubo do celular:</strong> solicite imediatamente o bloqueio do chip e peça à TI para revogar acesso a sistemas corporativos.</li>
+            </ul>
+            <div class="dica-real">
+                📵 Política Real Bebidas: o WhatsApp corporativo deve ser utilizado apenas para comunicação autorizada. Informações confidenciais (dados de clientes, estratégias, senhas) NUNCA devem ser enviadas por mensagens instantâneas. Utilize canais oficiais (e-mail corporativo criptografado, Teams/Slack) para dados sensíveis.
+            </div>
+            <p><strong>Caso identifique tentativa de golpe ou instalação suspeita:</strong> comunique imediatamente o setor de TI e relate ao CERT.br (doc@cert.br) se for phishing em larga escala.</p>
+        </div>
+
+        <!-- CAP 09 - CRIPTOGRAFIA E CERTIFICADOS (CERT.br) -->
+        <div class="capitulo" id="cap9">
+            <h2>09 CRIPTOGRAFIA E CERTIFICADOS DIGITAIS</h2>
+            <p>A criptografia garante confidencialidade e integridade (ex: HTTPS, certificados SSL/TLS). Nunca forneça dados sensíveis em sites sem o cadeado fechado e “https://”.</p>
+            <h3>Conexões seguras:</h3>
+            <ul>
+                <li>Conexão segura: endereço começa com https:// e cadeado verde. Em certificados EV SSL a barra fica verde com o nome da empresa.</li>
+                <li>Alertas de certificado: nunca ignore avisos de certificado expirado ou não confiável sem verificar a procedência.</li>
+                <li>Use VPN para acessos remotos e evite redes Wi-Fi abertas.</li>
+            </ul>
+            <div class="dica-real">
+                🔐 Assinatura digital: garante autenticidade e não repúdio. Emails contendo anexos críticos devem ser assinados digitalmente sempre que possível.
+            </div>
+        </div>
+
+        <!-- CAP 10 - CHECKLIST FINAL (completo) -->
+        <div class="capitulo" id="cap10">
+            <h2>10 CHECKLIST GERAL DE SEGURANÇA</h2>
+            <div class="checklist-grid">
+                <div class="check-categoria"><h4>🔑 SENHAS & ACESSO</h4>
+                    <div class="check-item">Senhas com 12+ caracteres, números e símbolos</div>
+                    <div class="check-item">Senha diferente para cada serviço crítico</div>
+                    <div class="check-item">2FA ativado em e-mail, banco, VPN e redes sociais</div>
+                    <div class="check-item">Uso de gerenciador de senhas</div>
+                </div>
+                <div class="check-categoria"><h4>💻 DISPOSITIVOS & BACKUP</h4>
+                    <div class="check-item">Antivírus ativo e atualizado</div>
+                    <div class="check-item">Sistema operacional e apps atualizados</div>
+                    <div class="check-item">Backup automático (3-2-1)</div>
+                    <div class="check-item">Firewall pessoal ativo</div>
+                </div>
+                <div class="check-categoria"><h4>📡 REDES & WHATSAPP</h4>
+                    <div class="check-item">Evito Wi-Fi público sem VPN</div>
+                    <div class="check-item">Uso VPN da empresa no home office</div>
+                    <div class="check-item">WhatsApp com verificação em duas etapas</div>
+                    <div class="check-item">Não compartilho dados por WhatsApp</div>
+                </div>
+                <div class="check-categoria"><h4>📩 GOLPES & COMPORTAMENTO</h4>
+                    <div class="check-item">Verifico remetente antes de abrir links/e-mails</div>
+                    <div class="check-item">Não clico em links de mensagens inesperadas</div>
+                    <div class="check-item">Reporto phishing e incidentes à TI</div>
+                    <div class="check-item">Privacidade em redes sociais restrita</div>
+                </div>
+            </div>
+            <div class="destaque">
+                ✅ Ao notar comportamento estranho (lentidão, pop-ups, arquivos sumindo) ou suspeitar de invasão: desconecte da rede, execute antivírus e comunique TI imediatamente.
+            </div>
+        </div>
+
+        <!-- Citação CERT.br e encerramento -->
+        <div style="background: #fef7e0; border-radius: 28px; padding: 1.8rem; text-align: center; margin: 2rem 0 1rem;">
+            <p style="font-size: 1.4rem; font-weight: 700;">🛡️ SEGURANÇA É ATITUDE, NÃO APENAS TECNOLOGIA.</p>
+            <p>Baseado na Cartilha de Segurança para Internet do CERT.br / NIC.br (versão 4.0) e adaptado para a Real Bebidas da Amazônia.</p>
+            <p>Dúvidas ou incidentes: <strong>setor de TI da Real Bebidas</strong> | <a href="http://cartilha.cert.br/" target="_blank" style="color:#145c46;">cartilha.cert.br</a></p>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 Real Bebidas da Amazônia — Guia de Segurança da Informação (Base CERT.br + práticas corporativas)</p>
+        <p>Colabore com a segurança: mantenha-se informado, notifique abusos e adote a postura preventiva.</p>
+        <p style="margin-top: 8px;"><a href="#">⬆️ Voltar ao topo</a></p>
+    </footer>
+</div>
+<div class="btn-topo">
+    <a href="#" class="top-link">⬆️ Topo</a>
+</div>
+</body>
+</html>
