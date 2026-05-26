@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Preços de Água Mineral</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header class="header">
+    <div>
+      <h1>Preços de Água Mineral</h1>
+      <p class="subtitle">Monitoramento de preços por estado, cidade, embalagem, marca e fonte (Norte/Nordeste com foco em Manaus)</p>
+    </div>
+    <div class="update-box">
+      <span>Última atualização</span>
+      <strong id="lastUpdated">--/--/----</strong>
+    </div>
+  </header>
+
+  <main>
+    <section class="filters">
+      <div class="filters-head">
+        <h2>Filtros</h2>
+        <button id="clearFilters" type="button">Limpar filtros</button>
+      </div>
+      <div class="filter-grid">
+        <label>Data<select id="filterDate"></select></label>
+        <label>Estado<select id="filterState"></select></label>
+        <label>Cidade<select id="filterCity"></select></label>
+        <label>Embalagem/Litragem<select id="filterPackage"></select></label>
+        <label>Marca<select id="filterBrand"></select></label>
+        <label>Canal<select id="filterChannel"></select></label>
+        <label>Fonte<select id="filterSource"></select></label>
+      </div>
+    </section>
+
+    <section class="kpis" id="kpis"></section>
+
+    <section class="charts">
+      <article>
+        <h3>Comparativo por estado (Atacado x Varejo)</h3>
+        <canvas id="barChart"></canvas>
+      </article>
+      <article>
+        <h3>Timeline de variação de preço</h3>
+        <canvas id="lineChart"></canvas>
+      </article>
+    </section>
+
+    <section>
+      <h3>Registros</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Data</th><th>Estado</th><th>Cidade</th><th>Embalagem</th><th>Marca</th><th>Canal</th>
+              <th>Local da Pesquisa</th><th>Fonte</th><th>Atacado (R$)</th><th>Varejo (R$)</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h3>Fontes/Sites monitorados</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Fonte</th><th>Tipo</th><th>Estado</th><th>Cidade</th><th>URL</th></tr></thead>
+          <tbody id="sourcesBody"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

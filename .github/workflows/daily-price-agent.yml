@@ -1,0 +1,29 @@
+name: Daily Price Agent
+
+on:
+  schedule:
+    - cron: '0 11 * * *' # 07:00 em Manaus (UTC-4)
+  workflow_dispatch:
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run agent
+        run: python3 scripts/price_agent.py
+
+      - name: Commit updates
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/prices.json
+          git diff --cached --quiet || git commit -m "chore: atualização diária dos preços"
+          git push
